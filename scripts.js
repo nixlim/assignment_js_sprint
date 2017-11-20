@@ -13,21 +13,11 @@ var sprintFunctions = {
   },
 
   loudSnakeCase: function(string){
-      var str2arr = string.split(RegExp('\\b'));
-      var re = new RegExp('^\\w')
-      var filtered = [], i = str2arr.length;
-      while (i--) {
-          if (re.test(str2arr[i])) {
-              filtered.push(str2arr[i]);
-          }
-      }
-      var filteredReversed = filtered.reverse().map(function(cap){
-          return (cap.charAt(0).toUpperCase() + cap.slice(1));
-      }).join("_");
-      return filteredReversed;
-      console.log(filteredReversed);
+      //break into words first
+      return string.match(/\w+/g).map(
+          (cap) => cap[0].toUpperCase() + cap.slice(1)
+      ).join("_");
 
-    // your code here
   },
 
   compareArrays: function(){

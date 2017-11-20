@@ -24,7 +24,7 @@ var sprintFunctions = {
       var filteredReversed = filtered.reverse().map(function(cap){
           return (cap.charAt(0).toUpperCase() + cap.slice(1));
       }).join("_");
-
+      return filteredReversed;
       console.log(filteredReversed);
 
     // your code here

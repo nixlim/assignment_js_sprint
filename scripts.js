@@ -2,13 +2,12 @@
 
 var sprintFunctions = {
   largestEl: function(someArray) {
-      var maxEL = someArray.reduce(function(a, b) {
-          return Math.max(a, b);
-      });
-      return maxEL;
+      //Method 1 - the Easy Way
+      return someArray.reduce((a, b) => Math.max(a, b));
   },
 
   reversed: function(string){
+      //Method 1 - the Easy Way
       return string.split("").reverse().join("");
   },
 
@@ -17,7 +16,6 @@ var sprintFunctions = {
       return string.match(/\w+/g).map(
           (cap) => cap[0].toUpperCase() + cap.slice(1)
       ).join("_");
-
   },
 
   compareArrays: function(){

@@ -1,32 +1,38 @@
 // FILL IN THE FUNCTIONS BELOW
 
 var sprintFunctions = {
-  largestEl: function(){  
-    // your code here
+  largestEl: function(someArray) {
+      var maxEL = someArray.reduce(function(a, b) {
+          return Math.max(a, b);
+      });
+      return maxEL;
   },
-  
-  reversed: function(){  
+
+  reversed: function(string){
+      return string.split("").reverse().join("");
+  },
+
+  loudSnakeCase: function(string){
+      var test = string.split(RegExp('\\b'));
+      var test2 = test.filter(a => a !== RegExp('[a-z]'));
+      console.log(test2);
     // your code here
   },
 
-  loudSnakeCase: function(){  
-    // your code here
-  },
-
-  compareArrays: function(){ 
+  compareArrays: function(){
     // your code here (replace the return)
-    return "Finish compareArrays first!" 
+    return "Finish compareArrays first!"
   },
 
-  fizzBuzz: function(){  
+  fizzBuzz: function(){
     // your code here
   },
 
-  myMap: function(){  
+  myMap: function(){
     // your code here
   },
 
-  primes: function(){  
+  primes: function(){
     // your code here
   },
 }

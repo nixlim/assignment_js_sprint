@@ -13,9 +13,21 @@ var sprintFunctions = {
   },
 
   loudSnakeCase: function(string){
-      var test = string.split(RegExp('\\b'));
-      var test2 = test.filter(a => a !== RegExp('[a-z]'));
-      console.log(test2);
+      var str2arr = string.split(RegExp('\\b'));
+      var re = new RegExp('^\\w')
+      var filtered = [], i = str2arr.length;
+      while (i--) {
+          if (re.test(str2arr[i])) {
+              filtered.push(str2arr[i]);
+          }
+      }
+      var filteredReversed = filtered.reverse().map(function(cap){
+
+      })
+
+      }
+      console.log(filteredReversed);
+
     // your code here
   },
 

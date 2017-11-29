@@ -80,11 +80,40 @@ var sprintFunctions = {
 
   },
 
-  myMap: function(){
-    // your code here
+  myMap: function(someArray,someFunction){
+       var newArray = someArray.map(function (value) {
+          return someFunction(value);
+      });
+      return newArray;
   },
 
-  primes: function(){
-    // your code here
+  primes: function(num){
+      var p; //flag variable
+      var primesArray = [];
+      //If num is 1,2 - empty array
+      for (i = num-1; i > 0; i--) {
+          if (i < 2) {
+              break;
+          } else if (i==2){
+              //always push 2 at the end
+              primesArray.push(i);
+          } else if (i > 2){
+              //simple and inefficient but ok for small numbers
+              for (y=2; y <= Math.floor(Math.sqrt(i)); y++){
+                  //if there is no remainder, it's not a prime
+                  if (i%y == 0) {
+                      //i is not a prime = set a flag
+                      p = i;
+                      // no need to count through the rest
+                      break;
+                  }
+              }
+              if (i !== p) {primesArray.push(i);}
+          }
+
+
+      }
+      // as we have been pushing, so we reverse
+      return primesArray.reverse();
   },
 }

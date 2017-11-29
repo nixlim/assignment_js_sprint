@@ -51,11 +51,33 @@ var sprintFunctions = {
           }
           //return the correct value for the results array
           return resultsArray.includes(false) ?  false : true;
+      } else {
+          return false;
       }
   },
 
-  fizzBuzz: function(){
-    // your code here
+  fizzBuzz: function(num){
+      //set up an array for results
+      var myArray = [];
+      //cycle through elements, test each then push into array
+      for (i = 1; i < num+1; i++){
+          //test for both 3&5 divisibility
+          if ((i%3 == 0) && (i%5 == 0)) {
+              myArray.push('FIZZBUZZ');
+          //test for 3 divisibility
+           } else if ((i%3 == 0) && !(i%5 == 0)){
+              myArray.push('FIZZ');
+          //test for 5 divisibility
+          } else if ((i%5 == 0) && !(i%3 == 0)){
+              myArray.push('BUZZ');
+          //feed all remaining elements as is
+          } else {
+              myArray.push(i);
+          }
+      }
+      //return the final array for comparison
+      return myArray;
+
   },
 
   myMap: function(){

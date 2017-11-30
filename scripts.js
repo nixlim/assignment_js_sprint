@@ -7,12 +7,12 @@ var sprintFunctions = {
       //Method 2 - the Loop
       //First, we set the maximum value to the first element in the array.
       //Then we loop through the array, comparing each element to our maximum and changing maximum as appropriate
-      var max = someArray[0];
-      for (i=1; i<someArray.length; i++){
-          if (someArray[i]>max){
-              max = someArray[i];
+      var max = null;
+      someArray.forEach(function(el){
+          if (max === null || el > max){
+              max = el;
           }
-      }
+      });
       return max;
 
   },
@@ -23,9 +23,9 @@ var sprintFunctions = {
       //Method 2 - the Loop
       //Strings are immutable, stupid! Build new string from old string, back to front.
       var newStr = "";
-      for (i = string.length;i > -1; i--) {
+      for (var i = string.length; i >= 0; i--) {
           newStr = newStr + string.charAt(i);
-          }
+      }
       return newStr;
   },
 
@@ -37,83 +37,63 @@ var sprintFunctions = {
   },
 
   compareArrays: function(array1, array2){
-      //set results placeholder
-      var resultsArray = [];
-      //check the length of arrays
-      if (array1.length == array2.length) {
-          //compare the array element by element and populate placeholder array
-          for (i = 0; i < array1.length; i++) {
-              if (array1[i] === array2[i]){
-                  resultsArray[i] = true;
-              } else {
-                  resultsArray[i] = false;
-              }
-          }
-          //return the correct value for the results array
-          return resultsArray.includes(false) ?  false : true;
-      } else {
+      if (array1.length != array2.length) {
           return false;
       }
+      for (var i = 0; i < array1.length; i++) {
+          if (array1[i] !== array2[i]){
+              return false;
+          }
+      }
+      //everything matches
+      return true;
   },
 
+
   fizzBuzz: function(num){
-      //set up an array for results
-      var myArray = [];
+      var result = [];
       //cycle through elements, test each then push into array
-      for (i = 1; i < num+1; i++){
+      for (var i = 1; i <= num; i++){
           //test for both 3&5 divisibility
-          if ((i%3 == 0) && (i%5 == 0)) {
-              myArray.push('FIZZBUZZ');
-          //test for 3 divisibility
-           } else if ((i%3 == 0) && !(i%5 == 0)){
-              myArray.push('FIZZ');
-          //test for 5 divisibility
-          } else if ((i%5 == 0) && !(i%3 == 0)){
-              myArray.push('BUZZ');
-          //feed all remaining elements as is
-          } else {
-              myArray.push(i);
+          if (i % 3 == 0 && i % 5 == 0) {
+              result.push('FIZZBUZZ');
+          } else if (i % 3 == 0){ //test for 3 divisibility
+              result.push('FIZZ');
+          } else if (i % 5 == 0){ //test for 5 divisibility
+              result.push('BUZZ');
+          } else { //feed all remaining elements as is
+              result.push(i);
           }
       }
       //return the final array for comparison
-      return myArray;
+      return result;
 
   },
-
+//TODO: write your own map function
   myMap: function(someArray,someFunction){
-       var newArray = someArray.map(function (value) {
-          return someFunction(value);
-      });
-      return newArray;
+       return someArray.map(someFunction);
   },
 
   primes: function(num){
-      var p; //flag variable
-      var primesArray = [];
+      var result = [];
       //If num is 1,2 - empty array
-      for (i = num-1; i > 0; i--) {
-          if (i < 2) {
-              break;
-          } else if (i==2){
-              //always push 2 at the end
-              primesArray.push(i);
-          } else if (i > 2){
-              //simple and inefficient but ok for small numbers
-              for (y=2; y <= Math.floor(Math.sqrt(i)); y++){
-                  //if there is no remainder, it's not a prime
-                  if (i%y == 0) {
-                      //i is not a prime = set a flag
-                      p = i;
-                      // no need to count through the rest
-                      break;
-                  }
+      for (var i = 2; i < num; i++) {
+          //simple and inefficient but ok for small numbers
+          var isPrime = true; //flag variable
+          for (var j = 2; j <= Math.floor(Math.sqrt(i)); j++){
+              //if there is no remainder, it's not a prime
+              if (i % j == 0) {
+                  //i is not a prime = set a flag
+                  isPrime = false;
+                  // no need to count through the rest
+                  break;
               }
-              if (i !== p) {primesArray.push(i);}
           }
-
-
+          if (isPrime) {
+            result.push(i);
+          }
       }
       // as we have been pushing, so we reverse
-      return primesArray.reverse();
+       return result;
   },
 }

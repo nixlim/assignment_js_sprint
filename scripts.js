@@ -5,7 +5,7 @@ var sprintFunctions = {
       //Method 1 - the Easy Way
       // return someArray.reduce((a, b) => Math.max(a, b));
       //Method 2 - the Loop
-      //First, we set the maximum value to the first element in the array.
+      //First, we set the maximum value to null, to evaluate empty arrays.
       //Then we loop through the array, comparing each element to our maximum and changing maximum as appropriate
       var max = null;
       someArray.forEach(function(el){
@@ -69,9 +69,13 @@ var sprintFunctions = {
       return result;
 
   },
-//TODO: write your own map function
+
   myMap: function(someArray,someFunction){
-       return someArray.map(someFunction);
+      var results = [];
+      for (var i = 0; i < someArray.length; i++) {
+          results[i] = someFunction(someArray[i]);
+      }
+      return results;
   },
 
   primes: function(num){

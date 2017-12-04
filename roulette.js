@@ -119,7 +119,7 @@ function Roulette (num) {
         return this.clientCash;
     };
 }
-
+//test suit
 r = new Roulette(100); //new object
 r.bankroll();//test the bankroll = expecting 100
 r.buyIn(1000);//add 1000

@@ -124,7 +124,7 @@ r = new Roulette(100); //new object
 r.bankroll();//test the bankroll = expecting 100
 r.buyIn(1000);//add 1000
 r.bankroll();//expecting bankroll of 200
-r.spin(100,00);//expecting to bet 100 on 1, deduct 100 from balance, and then process depending on win/loose
+r.spin(100,00);//expecting to bet 100 on 00, which is same as 0, deduct 100 from balance, and then process depending on win/loose
 r.bankroll();
 r.spin(44,"Even");//check for even bet
 r.bankroll();

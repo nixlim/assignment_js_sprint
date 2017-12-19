@@ -73,7 +73,7 @@ var sprintFunctions = {
   myMap: function(someArray,someFunction){
       var results = [];
       for (var i = 0; i < someArray.length; i++) {
-          results[i] = someFunction(someArray[i]);
+          results.push(someFunction(someArray[i]));
       }
       return results;
   },
